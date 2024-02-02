@@ -38,6 +38,27 @@ exports.getCategoryById = async (req, res) => {
     }
 };
 
+// get category by name
+exports.getCategoryByName = async (req, res) => {
+    try {
+        const category = await Category.findOne({
+            where: {
+                name: req.params.name
+            }
+        });
+
+        if (!category) {
+            return res.status(404).json({ message: 'Category not found' });
+        }
+
+        res.json(category);
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).json({ message: 'Server Error' });
+    }
+};
+
+
 // update category by id
 exports.updateCategoryById = async (req, res) => {
     try {

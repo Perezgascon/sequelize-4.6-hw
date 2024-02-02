@@ -11,6 +11,9 @@ router.post('/', categoryController.createCategory);
 // get category by id
 router.get('/:id', categoryController.getCategoryById);
 
+// get category by name
+router.get('/:name', categoryController.getCategoryByName);
+
 // update category by id
 router.put('/:id', categoryController.updateCategoryById);
 

@@ -1,6 +1,7 @@
 const express = require('express');
 const { sequelize, testConnection } = require('./models/conn');
 const categoryRoute = require('./routes/categoryRoute');
+const itemRoute = require('./routes/itemRoute');
 const { Op } = require('sequelize');
 const { Item, Category } = require('./models/associations');
 
@@ -19,6 +20,9 @@ app.get('/', (req, res) => {
 
 // categories route
 app.use('/api/categories', categoryRoute);
+
+// items route
+app.use('/api/items', itemRoute);
 
 
 app.listen(PORT, () => {
