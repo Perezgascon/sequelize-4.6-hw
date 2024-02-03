@@ -17,6 +17,8 @@ router.put('/:id', itemController.updateItemById);
 // delete item by id
 router.delete('/:id', itemController.deleteItemById);
 
+// shows all items in one category
+router.get('/:id/items', itemController.showItemsCategory);
 
 
 module.exports = router;

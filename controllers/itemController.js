@@ -83,3 +83,23 @@ exports.deleteItemById = async (req, res) => {
         res.status(500).json({ message: 'Server Error' });
     }
 };
+
+// show all items for a category
+
+exports.showItemsCategory = async (req, res) => {
+    try {
+        const items = await Item.findAll({
+            where: {
+                categoryid: req.params.id
+            }
+        });
+        if (!items) {
+            return res.status(404).json({ message: 'Items not found' });
+        }
+        res.status(201).json(items);
+    } 
+    catch (error) {
+        console.error(error.message);
+        res.status(500).json({ message: 'Server Error' });
+    }
+};
