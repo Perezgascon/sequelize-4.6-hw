@@ -68,3 +68,18 @@ exports.updateItemById = async (req, res) => {
         res.status(500).json({ message: 'Server Error' });
     }
 }
+
+// delete item by id
+exports.deleteItemById = async (req, res) => {
+    try {
+        const item = await Item.findByPk(req.params.id);
+        if (!item) {
+            return res.status(404).json({ message: 'Item not found' });
+        }
+        await item.destroy();
+        res.json({ message: 'Item deleted successfully' });
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).json({ message: 'Server Error' });
+    }
+};

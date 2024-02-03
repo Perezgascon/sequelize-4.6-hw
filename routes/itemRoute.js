@@ -14,6 +14,9 @@ router.post('/', itemController.createItem);
 // update item by id
 router.put('/:id', itemController.updateItemById);
 
+// delete item by id
+router.delete('/:id', itemController.deleteItemById);
+
 
 
 module.exports = router;
