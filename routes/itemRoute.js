@@ -8,6 +8,9 @@ router.get('/', itemController.getAllItems);
 // get item by id
 router.get('/:id', itemController.getItemById);
 
+// create new item
+router.post('/', itemController.createItem);
+
 
 
 
