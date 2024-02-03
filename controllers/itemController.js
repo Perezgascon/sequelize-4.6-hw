@@ -51,3 +51,20 @@ exports.createItem = async (req, res) => {
         res.status(500).json({ message: 'Server Error' });
     }
 };
+
+
+// update item by id
+exports.updateItemById = async (req, res) => {
+    try {
+        const item = await Item.findByPk(req.params.id);
+        if (!item) {
+            return res.status(404).json({ message: 'Item not found' });
+        }
+        const { name, price, description, categoryid } = req.body;
+        await item.update({ name, price, description, categoryid });
+        res.json(item);
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).json({ message: 'Server Error' });
+    }
+}

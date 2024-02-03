@@ -11,6 +11,8 @@ router.get('/:id', itemController.getItemById);
 // create new item
 router.post('/', itemController.createItem);
 
+// update item by id
+router.put('/:id', itemController.updateItemById);
 
 
 
